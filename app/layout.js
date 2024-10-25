@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Sidebar from './components/Sidebar'; // You may rename it to Sidebar.js to keep naming intuitive.
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,11 +21,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <body>
+      <div style={{ display: 'flex', height: '100vh' }}>
+        <Sidebar />
+        <div style={{ flex: 1 }}>
+          <main style={{ padding: '20px' }}>
+            {children}
+          </main>
+        </div>
+      </div>
+    </body>
+  </html>
   );
 }
